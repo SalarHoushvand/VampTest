@@ -1,0 +1,128 @@
+<html>
+
+<head>
+    <InvalidTag charset="UTF-8">
+        <title>Vampire Detector!</title>
+        <InvalidTag name="description" content="Login - Register Template">
+            <InvalidTag name="author" content="Lorenzo Angelino aka MrLolok">
+                <InvalidTag name="viewport" content="width=device-width, initial-scale=1.0">
+                    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+    <ul>
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="form.html">Start</a></li>
+        <li><a href="about.html">About Website</a></li>
+        
+    </ul>
+
+    <hr>
+
+
+    <h2> Fill out the form to see the results </h2>
+    <br>
+   
+
+    <div class="form1">
+
+        
+            <p>Have you ever seen you friend during daylight ?</p>
+            <select name="daylight" id="daylight">
+                <option value="0">Yes</option>
+                <option value="2">No</option>
+                <option value="1">I don't remember</option>
+                </select>
+            <br>
+            
+
+            <p>Have you ever seen you friend eating garlic ?</p>
+            <select name="garlic" id="garlic">
+                <option value="0">Yes</option>
+                <option value="2">No</option>
+                <option value="1">I don't remember</option>
+                </select>
+
+            <br>
+           
+
+            <p>Does your friend have a shadow ?</p>
+            <select name="garlic" id="garlic">
+                <option value="0">Yes</option>
+                <option value="2">No</option>
+                <option value="1">I don't remember</option>
+                </select>
+
+            <br>
+            
+
+            <p>Does your friend have a pale skin ?</p>
+            <select name="skin" id="skin">
+                <option value="2">Yes</option>
+                <option value="0">No</option>
+                </select>
+            
+            <br>
+            <br>
+            <br>
+            <button onclick="myFunction()">Submit!</button>
+        
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <div class="footer">
+        <div style="display: none;">Icons made by <a href="https://www.flaticon.com/authors/freepik"
+                title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"
+                title="Flaticon">www.flaticon.com</a></div>
+
+                <audio controls autoplay>
+       
+                    <source src="bg.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                  </audio>
+        <p class="footer_text"></p>
+    </div>
+   
+
+
+
+
+</body>
+
+<script>
+
+    function myFunction(){
+       var var1 = document.getElementById("daylight");
+       var daylight = var1.options[var1.selectedIndex].value;
+
+       var var2 = document.getElementById("garlic");
+       var garlic = var2.options[var2.selectedIndex].value;
+
+       var var3 = document.getElementById("skin");
+       var skin = var3.options[var3.selectedIndex].value;
+    
+        if (daylight+garlic+skin > 5){window.location.replace("vampire.html");}
+        else {window.location.replace("human.html");} 
+        
+    }
+
+   
+    
+    
+ 
+    
+    
+    
+        </script>
+</html>
