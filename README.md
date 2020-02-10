@@ -6,7 +6,7 @@ This is a class project for web applications development. (Spring 2020)
 <br>
 Team Members:
 <br>
-- Salar Houshvand
-- Mark Sokolov
-- Allen Haddock
+- Salar Houshvand <br>
+- Mark Sokolov <br>
+- Allen Haddock <br>
 
