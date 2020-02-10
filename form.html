@@ -17,7 +17,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="form.html">Start</a></li>
         <li><a href="about.html">About Website</a></li>
-        
+
     </ul>
 
     <hr>
@@ -25,51 +25,51 @@
 
     <h2> Fill out the form to see the results </h2>
     <br>
-   
+
 
     <div class="form1">
 
-        
-            <p>Have you ever seen you friend during daylight ?</p>
-            <select name="daylight" id="daylight">
-                <option value="0">Yes</option>
-                <option value="2">No</option>
-                <option value="1">I don't remember</option>
-                </select>
-            <br>
-            
 
-            <p>Have you ever seen you friend eating garlic ?</p>
-            <select name="garlic" id="garlic">
-                <option value="0">Yes</option>
-                <option value="2">No</option>
-                <option value="1">I don't remember</option>
-                </select>
+        <p>Have you ever seen you friend during daylight ?</p>
+        <select name="daylight" id="daylight">
+            <option value='0'>Yes</option>
+            <option value='2'>No</option>
+            <option value='1'>I don't remember</option>
+        </select>
+        <br>
 
-            <br>
-           
 
-            <p>Does your friend have a shadow ?</p>
-            <select name="shadow" id="shadow">
-                <option value="0">Yes</option>
-                <option value="2">No</option>
-                <option value="1">I don't remember</option>
-                </select>
+        <p>Have you ever seen you friend eating garlic ?</p>
+        <select name="garlic" id="garlic">
+            <option value='0'>Yes</option>
+            <option value='2'>No</option>
+            <option value='1'>I don't remember</option>
+        </select>
 
-            <br>
-            
+        <br>
 
-            <p>Does your friend have a pale skin ?</p>
-            <select name="skin" id="skin">
-                <option value="2">Yes</option>
-                <option value="0">No</option>
-                </select>
-            
-            <br>
-            <br>
-            <br>
-            <button onclick="myFunction()">Submit!</button>
-        
+
+        <p>Does your friend have a shadow ?</p>
+        <select name="shadow" id="shadow">
+            <option value='0'>Yes</option>
+            <option value='2'>No</option>
+            <option value='1'>I don't remember</option>
+        </select>
+
+        <br>
+
+
+        <p>Does your friend have a pale skin ?</p>
+        <select name="skin" id="skin">
+            <option value='2'>Yes</option>
+            <option value='0'>No</option>
+        </select>
+
+        <br>
+        <br>
+        <br>
+        <button onclick="myFunction()">Submit!</button>
+
 
 
     </div>
@@ -86,46 +86,37 @@
                 title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"
                 title="Flaticon">www.flaticon.com</a></div>
 
-                <audio controls autoplay>
-       
-                    <source src="bg.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                  </audio>
+        <audio controls autoplay>
+
+            <source src="bg.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
         <p class="footer_text"></p>
     </div>
-   
-
-
-
-
 </body>
 
 <script>
+    function myFunction() {
+        var var1 = document.getElementById("daylight");
+        var daylight = parseInt(var1.options[var1.selectedIndex].value);
 
-    function myFunction(){
-       var var1 = document.getElementById("daylight");
-       var daylight = var1.options[var1.selectedIndex].value;
+        var var2 = document.getElementById("garlic");
+        var garlic = parseInt(var2.options[var2.selectedIndex].value);
 
-       var var2 = document.getElementById("garlic");
-       var garlic = var2.options[var2.selectedIndex].value;
+        var var3 = document.getElementById("skin");
+        var skin = parseInt(var3.options[var3.selectedIndex].value);
 
-       var var3 = document.getElementById("skin");
-       var skin = var3.options[var3.selectedIndex].value;
+        var var4 = document.getElementById("shadow");
+        var shadow = parseInt(var4.options[var4.selectedIndex].value);
 
-       var var4 = document.getElementById("shadow");
-       var shadow = var4.options[var4.selectedIndex].value;
-    
-        if (daylight+garlic+skin+shadow > 6){window.location.replace("vampire.html");}
-        else {window.location.replace("human.html");} 
-        
+        if (daylight + garlic + skin + shadow > 5) {
+            window.location.replace("vampire.html");
+
+        } else {
+            window.location.replace("human.html");
+        }
+
     }
+</script>
 
-   
-    
-    
- 
-    
-    
-    
-        </script>
 </html>
