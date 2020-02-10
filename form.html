@@ -14,7 +14,7 @@
 <body>
 
     <ul>
-        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="form.html">Start</a></li>
         <li><a href="about.html">About Website</a></li>
         
@@ -50,7 +50,7 @@
            
 
             <p>Does your friend have a shadow ?</p>
-            <select name="garlic" id="garlic">
+            <select name="shadow" id="shadow">
                 <option value="0">Yes</option>
                 <option value="2">No</option>
                 <option value="1">I don't remember</option>
@@ -111,8 +111,11 @@
 
        var var3 = document.getElementById("skin");
        var skin = var3.options[var3.selectedIndex].value;
+
+       var var4 = document.getElementById("shadow");
+       var shadow = var4.options[var4.selectedIndex].value;
     
-        if (daylight+garlic+skin > 5){window.location.replace("vampire.html");}
+        if (daylight+garlic+skin+shadow > 6){window.location.replace("vampire.html");}
         else {window.location.replace("human.html");} 
         
     }
