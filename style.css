@@ -192,10 +192,36 @@ audio{
 
 .start-link{
     text-decoration: none;
+    
 }
 
 .start-link:hover{
     color: #d863bb;
+    animation-name: shake;
+	-webkit-animation-name: shake;	
+
+	animation-duration: 0.4s;	
+	-webkit-animation-duration: 0.4s;
+
+	animation-timing-function: ease;	
+	-webkit-animation-timing-function: ease;
+
+	animation-iteration-count: 1;
+	-webkit-animation-iteration-count: 1;
+
+	visibility: visible !important;	
+}
+
+@keyframes shake {
+	0%, 100% {transform: translateX(0);}
+    16%, 50%, 83% {transform: translateX(-10px);}
+    33%, 66% {transform: translateX(10px);}
+}
+
+@-webkit-keyframes shake {
+	0%, 100% {-webkit-transform: translateX(0);}
+    16%, 50%, 83% {-webkit-transform: translateX(-10px);}
+    33%, 66% {-webkit-transform: translateX(10px);}	
 }
 
 /* form Page ----------------------------------------------------------*/ 
@@ -248,7 +274,7 @@ audio{
     border-right: 0ch;
     border-color: white;
     border-style: solid;
-    height: 40px;
+    height: 20px;
 }
 
 .footer_text {
@@ -257,8 +283,16 @@ audio{
 
 }
 
+/* Pie Chart ----------------------------------------------------------*/ 
 
+.pie_chart{
+   margin-left: 30%;
+   color: aliceblue;
+}
 
+.pieSliceTextStyle {
+    color: 'black'
+}
 
 /* Extra -----------------------------------------------------------*/
 .small_line {

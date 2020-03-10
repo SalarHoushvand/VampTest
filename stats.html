@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <InvalidTag charset="UTF-8">
+        <title>Vampire Detector!</title>
+        <InvalidTag name="description" content="Login - Register Template">
+            <InvalidTag name="author" content="Lorenzo Angelino aka MrLolok">
+                <InvalidTag name="viewport" content="width=device-width, initial-scale=1.0">
+                    <link rel="stylesheet" href="style.css">
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+
+<body>
+<!-- Nav Bar  -->
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="form.html">Start</a></li>
+        <li><a href="about.html">About Website</a></li>
+    </ul>
+
+<!-- Horizontal Line  -->
+    <hr>
+
+<!-- Header  -->
+<h2>Statistics</h2>
+
+
+<!-- Pie chart  -->
+
+<div id="piechart" class="pie_chart">.</div>
+
+
+
+<!-- Footer  -->
+    <div class="footer">
+        <p class="footer_text"></p>
+    </div>
+
+<!-- Java Script  -->
+    <script type="text/javascript">
+        // Load google charts
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        
+        var human = Math.floor(Math.random() * 10);
+        var vampire = 10 - human;
+        // Draw the chart and set the chart values
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Vampire : ' + vampire,vampire],
+          ['Human : ' + human, human],
+        ]);
+        
+          // Optional; add a title and set the width and height of the chart
+          var options = {'title':'', 'width':750, 'height':600,'color':'red',
+           'backgroundColor': '#021f2e',
+           'legendTextStyle': { color: '#FFF' }, 
+            'colors': ['#d863bb', '#e6693e']};
+        
+          // Display the chart inside the <div> element with id="piechart"
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+          chart.draw(data, options);
+        }
+        </script>
+
+
+</body>
+
+</html>
