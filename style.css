@@ -294,6 +294,34 @@ audio{
     color: 'black'
 }
 
+/* Google Table ----------------------------------------------------------*/ 
+
+.g_table{
+    margin-left: 32%;
+}
+
+td {
+    background-color: #021f2e !important;
+    border: none !important;
+    text-align: center;
+}
+
+tr{
+
+    background:none;
+    color: #e6693e;
+}
+
+
+/* Bar Chart ----------------------------------------------------------*/ 
+
+.bar_chart{
+    width: 50%;
+    height: 40%;
+    margin-left: 26%;
+    margin-bottom: 50px;
+}
+
 /* Extra -----------------------------------------------------------*/
 .small_line {
     background-color: rgb(91, 93, 102);
