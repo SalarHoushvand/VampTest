@@ -297,7 +297,7 @@ audio{
 /* Google Table ----------------------------------------------------------*/ 
 
 .g_table{
-    margin-left: 32%;
+    margin-left: 0%;
 }
 
 td {
@@ -344,6 +344,13 @@ tr{
     margin-right: auto;
 }
 
+input{
+    border-radius: 5px;
+    border: none;
+    border-style: solid;
+    height:30px ;
+    width: 250px;
+}
 
 
 
