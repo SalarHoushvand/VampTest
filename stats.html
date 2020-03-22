@@ -34,8 +34,8 @@
         
         <p>Vampire ?</p>
         <select style="color:#021f2e ;" name="isVamp" id="isVamp">
-            <option value='11'>Yes</option>
-            <option value='22'>No</option>
+            <option value='1'>Yes</option>
+            <option value='2'>No</option>
         </select>
 
         <br>
@@ -43,8 +43,7 @@
 
         <button class="submit_button" style="color:#021f2e ;" onclick="insert_row()">Submit!</button>
         <button class="submit_button" style="font-size: 18px; margin-left: 20px; margin-right: 20px; color:#021f2e ;"  onclick="delete_row()">Delete Row</button>
-
-      <a href="stats.html"><button style="color:#021f2e ;" class="rand_button" onclick="random()">Random Guess!</button></a>
+        <button style="color:#021f2e ;" class="rand_button" onclick="random()">Random Guess!</button>
         <br>
         <br>
         <br>
@@ -53,10 +52,20 @@
         <br>
 
 
-    <!-- Table  -->
-    <div id="table_div" class="g_table"></div>
-
+    <!-- Table  -->   
+    <table id="table_1">
+        <tr>
+          <th>Name</th>
+          <th>Vampire</th>
+        </tr>
+        <tr>
+          <td id="name1">Alfreds Futterkiste</td>
+          <td>Yes</td>
+        </tr>
+      </table>
     </div>
+
+ 
 
     <!-- Pie chart  -->
 
@@ -72,134 +81,181 @@
         <p class="footer_text"></p>
     </div>
 
-    <!-- Java Script  -->
-    <script type="text/javascript">
-        // Load google charts
-        google.charts.load('current', {
-            'packages': ['corechart']
-        });
 
 
-        google.charts.setOnLoadCallback(drawChart);
+<!-- ------------------------------------------------------------------------------------------  -->
+<!-- Java Script  -->
+<script type="text/javascript">
 
-        // randomly split 10 people into vampire and human
-        var human = Math.floor(Math.random() * 10);
-        var vampire = 10 - human;
+// define variables for vampires and humans
+    var vampire = 1;
+    var human = 0;
 
-        var names = ["Ciaron Huang", "Keeley Frazier", "Brittney Castro",
+// name list for random generation
+
+var names = ["Ciaron Huang", "Keeley Frazier", "Brittney Castro",
             "Ziva Flower", "Keiran Hood", "Sana Tucker", "Harlen Sampson",
             "Matthias Huerta", "Ashlea Glenn", "Kaylee Whiteley"
         ]
 
-        // Pie Chart
-        // Draw the chart and set the chart values
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
-                ['Vampire : ' + vampire, vampire],
-                ['Human : ' + human, human],
+
+// Load google charts
+    google.charts.load('current', {
+    'packages': ['corechart']
+    });
+
+    google.charts.setOnLoadCallback(drawChart);
+
+
+// ----------------------------------------------------------------------------------------
+// Pie Chart
+// Draw the chart and set the chart values
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Vampire : ' + vampire, vampire],
+            ['Human : ' + human, human],
             ]);
 
-            // Optional; add a title and set the width and height of the chart
-            var options = {
-                'title': '',
-                'width': 750,
-                'height': 600,
-                'color': 'red',
-                'backgroundColor': '#021f2e',
-                'legendTextStyle': {
-                    color: '#FFF'
-                },
-                'colors': ['#d863bb', '#e6693e']
+// Optional; Set CSS data for the pie chart
+     var options = {
+        'title': '',
+        'width': 750,
+        'height': 600,
+        'color': 'red',
+        'backgroundColor': '#021f2e',
+        'legendTextStyle': {
+             color: '#FFF'
+            },
+        'colors': ['#d863bb', '#e6693e']
             };
 
-            // Display the chart inside the <div> element with id="piechart"
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-            chart.draw(data, options);
+// Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
         }
 
-        //Table
+// -------------------------------------------------------------------------------------------                      
+//function to insert a new row
 
+        function insert_row() {
+            var table = document.getElementById("table_1");
+            var row = table.insertRow(1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = document.getElementById('fname').value;
+            var e = document.getElementById("isVamp");
+            var strUser = e.options[e.selectedIndex].value;
+               
+                if (strUser == 1) {
+                    cell2.innerHTML = "Yes";
+                    vampire = vampire + 1;
+                } else {
+                    cell2.innerHTML = "No";
+                    human = human + 1;
+                        }
+
+            drawChart();
+            drawBarChart()
+
+                        }
+
+// -------------------------------------------------------------------------------------------
+//function to delete row 
+
+    function delete_row() {
+        var table = document.getElementById("table_1");                       
+        cellText = document.getElementById("table_1").rows[1].cells[1].innerHTML;
+
+            if (cellText == "Yes") {
+                vampire = vampire - 1;
+            } else {
+                human = human - 1;
+                            }
+        document.getElementById("table_1").deleteRow(1);
+        drawChart();
+        drawBarChart()
+                        }
+
+// -------------------------------------------------------------------------------------------
+//function to guess randomly
+        
+    function random() {
+        vampire = +1;
+        human = 0;
         var trues = []
         var falses = []
 
         var i;
         for (i = 0; i < vampire; i++) {
-            trues.push("true");;
+            trues.push("Yes");;
         }
 
         var j;
         for (i = 0; i < human; i++) {
-            trues.push("false");;
+            trues.push("No");;
         }
 
-        google.charts.load('current', {
-            'packages': ['table']
-        });
-        google.charts.setOnLoadCallback(drawTable);
+    var table = document.getElementById("table_1");
 
-        function drawTable() {
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Name');
-            data.addColumn('string', 'Vampire');
-            var lists = [
-                ['Ciaron Huang', trues[5]],
-                ['Keeley Frazier', trues[4]],
-                ['Brittney Castro', trues[0]],
-                ['Ziva Flower', trues[9]],
-                ['Keiran Hood', trues[2]],
-                ['Sana Tucker', trues[8]],
-                ['Harlen Sampson', trues[3]],
-                ['Matthias Huerta', trues[1]],
-                ['Ashlea Glenn', trues[7]],
-                ['Kaylee Whiteley', trues[6]],
-            ];
-            data.addRows(lists);
-            var options = {
-                'background-color': '#021f2e',
-                'showRowNumber': 'false',
-                'width': '50%',
-                'height': '40%',
-                'allowHtml': 'true'
+    var rand_num = Math.floor(Math.random() * 10);
+
+    var names = ["Ciaron Huang", "Keeley Frazier", "Brittney Castro",
+    "Ziva Flower", "Keiran Hood", "Sana Tucker", "Harlen Sampson",
+    "Matthias Huerta", "Ashlea Glenn", "Kaylee Whiteley"
+    ];
+    
+    var n;
+
+        for (n = 0; n < rand_num; n++) {
+            var row = table.insertRow(1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = names[n];
+
+            if (n % 2 == 0) {
+                cell2.innerHTML = "No";
+                human = human + 1;
+            } else {
+               cell2.innerHTML = "Yes";
+               vampire = vampire + 1;
+             }
+
             }
 
-            var table = new google.visualization.Table(document.getElementById('table_div'));
+    drawChart();
+    drawBarChart();
+}        
 
-            var formatter = new google.visualization.ColorFormat();
-            formatter.addRange('true', 'true', 'white', 'orange');
+// -------------------------------------------------------------------------------------------        
+// Bar Chart
 
-            table.draw(data, options);
-
-
-        }
-
-        // Bar Chart
-        function drawBarChart() {
-            /* Define the chart to be drawn.*/
-            var data = google.visualization.arrayToDataTable([
-                ['Human or Vampire', 'Numbers', {
-                    role: 'style'
+    function drawBarChart() {
+        /* Define the chart to be drawn.*/
+        var data = google.visualization.arrayToDataTable([
+            ['Human or Vampire', 'Numbers', {
+            role: 'style'
                 }],
-                ['Human', human, 'color: #e6693e'],
-                ['Vampire', vampire, 'color: #d863bb'],
+            ['Human', human, 'color: #e6693e'],
+            ['Vampire', vampire, 'color: #d863bb'],
             ]);
-            var options = {
-                'title': 'Human or Vampire',
-                'isStacked': 'false',
-                'background-color': '#021f2e',
-                'backgroundColor': {
-                    'fill': '#021f2e'
+        var options = {
+            'title': 'Human or Vampire',
+            'isStacked': 'false',
+            'background-color': '#021f2e',
+            'backgroundColor': {
+                'fill': '#021f2e'
                 },
-                'titleTextStyle': {
-                    'color': 'white'
+            'titleTextStyle': {
+                'color': 'white'
                 },
-                'legend': {
-                    'position': 'none'
+            'legend': {
+                'position': 'none'
                 }
             };
-            /* Instantiate and draw the chart.*/
-            var chart = new google.visualization.BarChart(document.getElementById('bar'));
-            chart.draw(data, options);
+        /* Instantiate and draw the chart.*/
+        var chart = new google.visualization.BarChart(document.getElementById('bar'));
+        chart.draw(data, options);
 
         }
         google.charts.setOnLoadCallback(drawBarChart);
